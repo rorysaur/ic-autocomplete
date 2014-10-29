@@ -207,7 +207,7 @@ exports["default"] = Ember.Component.extend({
 
   registerWithAutocomplete: function() {
     this.get('autocomplete').registerOption(this);
-  }.on('willInsertElement'),
+  }.on('didInsertElement'),
 
   /**
    * Unregisters itself with the suggest component.
