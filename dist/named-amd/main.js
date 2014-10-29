@@ -215,7 +215,7 @@ define("ic-autocomplete/autocomplete-option",
 
       registerWithAutocomplete: function() {
         this.get('autocomplete').registerOption(this);
-      }.on('willInsertElement'),
+      }.on('didInsertElement'),
 
       /**
        * Unregisters itself with the suggest component.
