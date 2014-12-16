@@ -378,6 +378,7 @@ define("ic-autocomplete/autocomplete",
       inputValue: '',
 
       autocomplete: true,
+      replaceInput: true,
 
       /**
        * Two-way bound property representing the current value.
@@ -567,7 +568,7 @@ define("ic-autocomplete/autocomplete",
             this.selectOption(option, {focus: false});
           }
         }
-        if (this.get('isOpen') && this.get('inputValue')) {
+        if (this.get('isOpen') && this.get('inputValue') && this.get('replaceInput')) {
           Ember.run.scheduleOnce('afterRender', this, 'autocompleteText');
         }
       },
@@ -727,7 +728,7 @@ define("ic-autocomplete/autocomplete",
         }
         this.sendAction('on-input', this, this.get('inputValue'));
         // TODO: later because ???
-        if (this.get('autocomplete')) {
+        if (this.get('autocomplete') && this.get('replaceInput')) {
           Ember.run.scheduleOnce('afterRender', this, 'autocompleteText');
         }
       }.observes('inputValue'),

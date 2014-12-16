@@ -15,6 +15,7 @@ define(
       inputValue: '',
 
       autocomplete: true,
+      replaceInput: true,
 
       /**
        * Two-way bound property representing the current value.
@@ -204,7 +205,7 @@ define(
             this.selectOption(option, {focus: false});
           }
         }
-        if (this.get('isOpen') && this.get('inputValue')) {
+        if (this.get('isOpen') && this.get('inputValue') && this.get('replaceInput')) {
           Ember.run.scheduleOnce('afterRender', this, 'autocompleteText');
         }
       },
@@ -364,7 +365,7 @@ define(
         }
         this.sendAction('on-input', this, this.get('inputValue'));
         // TODO: later because ???
-        if (this.get('autocomplete')) {
+        if (this.get('autocomplete') && this.get('replaceInput')) {
           Ember.run.scheduleOnce('afterRender', this, 'autocompleteText');
         }
       }.observes('inputValue'),
